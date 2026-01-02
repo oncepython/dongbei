@@ -2058,7 +2058,11 @@ def TranslateAndRun(dongbei_code: str, src_file: str, xudao: bool = False) -> st
 
 
 def get_input(prompt: str) -> str:
-    return input(prompt)
+    try:
+        return input(prompt)
+    except (KeyboardInterrupt, EOFError):
+        print("完犊子了！")
+        sys.exit()
 
 
 def repl():
